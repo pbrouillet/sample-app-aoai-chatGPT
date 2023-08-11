@@ -33,12 +33,14 @@ const Chat = () => {
     const [showAuthMessage, setShowAuthMessage] = useState<boolean>(true);
     
     const getUserInfoList = async () => {
-        const userInfoList = await getUserInfo();
-        if (userInfoList.length === 0 && window.location.hostname !== "127.0.0.1") {
-            setShowAuthMessage(true);
-        }
-        else {
+        if (window.location.hostname === "127.0.0.1" || window.location.hostname.indexOf(".app.github.dev") !== -1) {
             setShowAuthMessage(false);
+            return;
+        }
+
+        const userInfoList = await getUserInfo();
+        if (userInfoList.length === 0) {
+            setShowAuthMessage(true);
         }
     }
 

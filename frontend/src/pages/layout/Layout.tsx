@@ -3,13 +3,27 @@ import styles from "./Layout.module.css";
 import Azure from "../../assets/Azure.svg";
 import { CopyRegular, ShareRegular } from "@fluentui/react-icons";
 import { Dialog, Stack, TextField } from "@fluentui/react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+
+import SettingsForm from "@/components/SettingsForm";
 
 const Layout = () => {
     const [isSharePanelOpen, setIsSharePanelOpen] = useState<boolean>(false);
     const [copyClicked, setCopyClicked] = useState<boolean>(false);
     const [copyText, setCopyText] = useState<string>("Copy URL");
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    // Function to open the modal
+    const openModal = () => {
+      setIsModalOpen(true);
+    };
+  
+    // Function to close the modal
+    const closeModal = () => {
+      setIsModalOpen(false);
+    };
+  
     const handleShareClick = () => {
         setIsSharePanelOpen(true);
     };
@@ -47,6 +61,11 @@ const Layout = () => {
                         <div className={styles.shareButtonContainer} role="button" tabIndex={0} aria-label="Share" onClick={handleShareClick} onKeyDown={e => e.key === "Enter" || e.key === " " ? handleShareClick() : null}>
                             <ShareRegular className={styles.shareButton} />
                             <span className={styles.shareButtonText}>Share</span>
+                        </div>
+                        
+                        <div className={styles.shareButtonContainer} role="button" tabIndex={0} aria-label="Share" onClick={handleShareClick} onKeyDown={e => e.key === "Enter" || e.key === " " ? handleShareClick() : null}>
+                            <ShareRegular className={styles.shareButton} />
+                            <span className={styles.shareButtonText}>Settings</span>
                         </div>
                     </Stack>
                 </div>

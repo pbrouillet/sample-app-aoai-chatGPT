@@ -4,12 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "tsc && vite build",
     "watch": "tsc && vite build --watch"
   },
   "dependencies": {
-    "@fluentui/react": "^8.105.3",
+    "@fluentui/react": "^8.110.13",
     "@fluentui/react-icons": "^2.0.195",
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@types/lodash-es": "^4.17.7",
+    "@types/node": "^20.4.9",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@vitejs/plugin-react": "^3.1.0",

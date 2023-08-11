@@ -5,10 +5,18 @@ import requests
 import openai
 from flask import Flask, Response, request, jsonify, send_from_directory
 from dotenv import load_dotenv
+from flask_cors import CORS
 
 load_dotenv()
 
 app = Flask(__name__, static_folder="static")
+
+# Configure CORS with specific options
+#CORS(app) #origins="*", expose_headers="*", allow_headers="*", send_wildcard=True, supports_credentials=True)
+
+CORS(app) # , resources={r"/*": {"origins": "https://zany-space-yodel-r7r99jq5v6cp4rv-5173.app.github.dev/"}}
+
+
 
 # Static Files
 @app.route("/")

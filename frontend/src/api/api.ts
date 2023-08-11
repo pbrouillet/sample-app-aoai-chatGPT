@@ -1,7 +1,18 @@
+import { config } from "dotenv";
 import { UserInfo, ConversationRequest } from "./models";
 
 export async function conversationApi(options: ConversationRequest, abortSignal: AbortSignal): Promise<Response> {
-    const response = await fetch("/conversation", {
+    debugger;
+    console.log(import.meta.env)
+
+    let endpointHost = import.meta.env.VITE_BACKEND_ENDPOINT;
+    let conversationEndpoint = "/conversation";
+    
+    if (endpointHost) {
+        conversationEndpoint = endpointHost.replace(/\/+$/, '') + conversationEndpoint;
+    }
+
+    const response = await fetch(conversationEndpoint, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
